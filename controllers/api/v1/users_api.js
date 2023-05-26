@@ -66,11 +66,30 @@ module.exports.getAllTasksByUser = async (req, res) => {
     const userId = req.user._id;
 
     // Find all tasks associated with the user ID
-    const tasks = await Task.find({ user: userId });
+    const tasks = await Task.find({ user: userId }).sort({ due_date: 1 });
 
     res.status(200).json(tasks);
   } catch (error) {
     console.log("*********", error);
     return res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getUserTasksByCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
+    const userId = req.user.id;
+
+    // Find tasks for the given category and user ID
+    const tasks = await Task.find({ category, user: userId });
+
+    res.status(200).json({
+      message: `All ${category} tasks for ${userId}`,
+      data: {
+        tasks,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
+const env = require("./environment");
 
 //connect to the database
-mongoose.connect("mongodb://0.0.0.0:27017/todo_list_db");
+mongoose.connect(`mongodb://0.0.0.0:27017/${env.db}`);
 
 //acquire the connection(to check if it's successful)
 const db = mongoose.connection;

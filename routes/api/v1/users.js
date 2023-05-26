@@ -10,5 +10,10 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   usersApi.getAllTasksByUser
 );
+router.get(
+  "/tasks/:category",
+  passport.authenticate("jwt", { session: false }),
+  usersApi.getUserTasksByCategory
+);
 
 module.exports = router;
