@@ -1,3 +1,9 @@
+## Setup on Loacal Machine
+Download the code from the github library
+Extract the compressed folder and navigate to the root directory of the folder
+Run "npm install" to install all relevent dependencies
+Setup environment variables in the environment.js file 
+
 
 # Task Management API Documentation
 
